@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "456872982879",
+    "firebase_url": "https://lojagl.firebaseio.com",
+    "project_id": "lojagl",
+    "storage_bucket": "lojagl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:456872982879:android:7bb1f75a43280ce6c11eea",
+        "android_client_info": {
+          "package_name": "com.thlapinha.lojagl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "456872982879-am8gntgu3e5hutf29v032ak0c48l3299.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thlapinha.lojagl",
+            "certificate_hash": "b022a5448837d5a6317cb9cf7cb702f3ca3600cf"
+          }
+        },
+        {
+          "client_id": "456872982879-eebkrolag3fhjokcego88fja0pmbtaej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVkLHJhM8IQrcgGdqI8yLApOQP-MmvCus"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "456872982879-eebkrolag3fhjokcego88fja0pmbtaej.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
