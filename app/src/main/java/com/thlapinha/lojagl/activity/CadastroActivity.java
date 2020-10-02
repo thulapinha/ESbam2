@@ -13,6 +13,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.thlapinha.lojagl.R;
 import com.thlapinha.lojagl.config.ConfiguracaoFirebase;
 import com.thlapinha.lojagl.model.Usuario;
@@ -63,6 +66,7 @@ public class CadastroActivity extends AppCompatActivity {
                         Toast.makeText(CadastroActivity.this,
                                 "Preencha o E-mail!",
                                 Toast.LENGTH_LONG).show();
+
                     }
                 } else {
                     Toast.makeText(CadastroActivity.this,
@@ -88,9 +92,24 @@ public class CadastroActivity extends AppCompatActivity {
                     Toast.makeText(CadastroActivity.this,
                             "Sucesso ao cadastra o usuário!",
                             Toast.LENGTH_LONG).show();
+
                 }else {
+                    String exccao = "";
+                    try {
+                        throw task.getException();
+                    } catch (FirebaseAuthWeakPasswordException e ) {
+                      exccao = "Digite uma senha mais forte!";
+                    }catch (FirebaseAuthInvalidCredentialsException e ){
+                        exccao = "Digite um E-mail válido!";
+                    }catch (FirebaseAuthUserCollisionException e ){
+                        exccao = "Essa conta já foi cadastrada!";
+                    }catch (Exception e){
+                        exccao = "Erro ao cadastrar usuário!:" + e.getMessage();
+                        e.printStackTrace();
+                    }
+
                     Toast.makeText(CadastroActivity.this,
-                            "Erro ao cadastrar usuário",
+                            exccao,
                             Toast.LENGTH_LONG).show();
                 }
             }
