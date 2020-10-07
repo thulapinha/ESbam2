@@ -17,6 +17,22 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="-133dp">
 
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:text="Acesse sua conta"
+            android:textAlignment="center"
+            android:textColor="@color/design_default_color_background"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/editEmail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.402"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <EditText
             android:id="@+id/editEmail"
             android:layout_width="0dp"
@@ -62,8 +78,8 @@
             android:layout_marginEnd="32dp"
             android:background="@color/colorPrimaryDark"
             android:text="ENTRAR"
-            android:textAlignment="center"
 
+            android:textAlignment="center"
             android:textColor="@color/browser_actions_bg_grey"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -71,22 +87,6 @@
             app:layout_constraintHorizontal_bias="0.45"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editSenha" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:text="Acesse sua conta"
-            android:textAlignment="center"
-            android:textColor="@color/design_default_color_background"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/editEmail"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.402"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

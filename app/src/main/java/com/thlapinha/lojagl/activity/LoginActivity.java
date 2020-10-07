@@ -1,5 +1,6 @@
 package com.thlapinha.lojagl.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -53,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                         usuario.setEmail(textoEmail);
                         usuario.setSenha(textoSenha);
 
-
+                        validarLogin();
 
                     } else {
                         Toast.makeText(LoginActivity.this,
@@ -71,38 +72,44 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     public void validarLogin(){
-        autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
 
-        autenticacao.createUserWithEmailAndPassword(
-                usuario.getEmail(), usuario.getSenha()
-        ).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+        autenticacao.signInWithEmailAndPassword(
+                usuario.getEmail(),
+                usuario.getSenha()
+        ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    Toast.makeText(LoginActivity.this,
-                            "Sucesso ao fazer Login!",
-                            Toast.LENGTH_LONG).show();
+
+                if ( task.isSuccessful() ){
+
+                    abrirTelaPrincipal();
 
                 }else {
-                    String exccao = "";
+
+                    String excecao = "";
                     try {
                         throw task.getException();
-                    } catch (FirebaseAuthInvalidUserException e) {
-                        exccao = "Usuário não está cadastrado!";
-                    }catch (FirebaseAuthInvalidCredentialsException e ){
-
-                        exccao = "E-mail e senha não corresponde ao Usuário cadastrado!";
+                    }catch ( FirebaseAuthInvalidUserException e ) {
+                        excecao = "Usuário não está cadastrado.";
+                    }catch ( FirebaseAuthInvalidCredentialsException e ){
+                        excecao = "E-mail e senha não correspondem a um usuário cadastrado";
                     }catch (Exception e){
-                        exccao = "Erro ao fazer Login!:" + e.getMessage();
+                        excecao = "Erro ao cadastrar usuário: "  + e.getMessage();
                         e.printStackTrace();
                     }
 
                     Toast.makeText(LoginActivity.this,
-                            exccao,
-                            Toast.LENGTH_LONG).show();
+                            excecao,
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
     }
+    public void abrirTelaPrincipal(){
+        startActivity(new Intent(this, PrincipalActivity.class));
+        finish();
+    }
+
 }
